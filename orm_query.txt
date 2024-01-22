@@ -1,0 +1,47 @@
+from myapp.model import Movie
+
+Movie.objects.create(name="ozler",language="malayalam",runtime=120,genre="action",director="midhun",actors="jayaram",year=2024)
+Movie.objects.create(name="neru",language="malayalam",runtime=130,genre="drama",director="jeetujoseph",actors="mohanlal",year=2023)
+Movie.objects.create(name="turbo",language="malayalam",runtime=120,genre="action",director="vyshakh",actors="mammootty",year=2024)
+Movie.objects.create(name="malaikottavaliban",language="malayalam",runtime=140,genre="action",director="pelliserri",actors="mohanlal",year=2024)
+Movie.objects.create(name="leo",language="tamil",runtime=150,genre="action",director="lokesh",actors="vijay",year=2023)
+Movie.objects.create(name="salaar",language="kannada",runtime=160,genre="action",director="prashantneel",actors="prabhas",year=2023)
+
+qs=Movie.objects.all()
+qs
+
+Movie.objects.get(id=5) 
+
+Movie.objects.filter(language="malayalam")
+
+
+update orm:
+------------
+
+Movie.objects.filter(id=4).update(director="lijo",genre="drama")
+
+delete query:
+--------------
+
+Movie.objects.filter(id=4).delete()
+
+field look up:
+--------------
+
+<   __lt
+<=  __lte
+>   __gt
+>=  __gte
+
+Movie.objects.filter(year__lte=2024)
+
+excluding objects:
+------------------
+
+Movie.objects.exclude(language="tamil")
+
+for listing genres:
+-------------------
+
+
+Movie.objects.all().values_list("genre",flat==True).distinct()
